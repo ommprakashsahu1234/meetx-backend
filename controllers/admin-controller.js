@@ -414,7 +414,7 @@ const getReportsForUser = async (req, res) => {
 const getAllComplaints = async (req, res) => {
   try {
     const complaints = await Complaint.find()
-      .populate("userId", "username profileImageURL")
+      .populate("userId", "username profileImageURL _id")
       .sort({ createdAt: -1 });
 
     res.status(200).json(complaints);
