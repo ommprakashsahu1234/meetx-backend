@@ -214,10 +214,20 @@ const getUserByUsername = async (req, res) => {
 
 const getReportedPosts = async (req, res) => {
   try {
+    // const reports = await ReportPost.find()
+    //   .populate({
+    //     path: "postId",
+    //     populate: { path: "tags", select: "username" },
+    //   })
+    //   .lean();
+
+
     const reports = await ReportPost.find()
       .populate({
         path: "postId",
-        populate: { path: "tags", select: "username" },
+        populate: [
+          { path: "authorId", select: "username _id" }
+        ],
       })
       .lean();
 
@@ -240,7 +250,7 @@ const getReportedPosts = async (req, res) => {
       post,
       count: postCounts[post._id.toString()] || 0,
     }));
-
+    console.log("✅ Reported Posts:", JSON.stringify(uniquePosts[0], null, 2));
     res.json(uniquePosts);
   } catch (err) {
     console.error("Failed to fetch reported posts:", err);
