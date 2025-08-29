@@ -10,7 +10,7 @@ const {
 } = require("../controllers/message-controller");
 
 router.get("/by-username/:username", verifyToken, getMessagesByUsername);
-router.get("/chat-users", verifyToken, getChatUsersWithUnseen); // ✅ KEEP THIS ONLY
+router.get("/chat-users", verifyToken, getChatUsersWithUnseen); 
 router.get("/unseen-count", verifyToken, getUnseenMessagesCount);
 router.get("/search-usernames", verifyToken, searchUsernames);
 

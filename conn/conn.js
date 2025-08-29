@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config();
-// dotenv.config({quiet:true});
 
 mongoose.set('strictQuery', false);
 
@@ -19,5 +18,3 @@ const conn = async () => {
 };
 
 module.exports = conn;
-
-// mongodb+srv://opsomm:opsomm1234@cluster0.xfnpvaa.mongodb.net/MeetX?retryWrites=true&w=majority&appName=Cluster0

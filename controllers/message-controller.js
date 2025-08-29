@@ -46,7 +46,6 @@ const getMessagesByUsername = async (req, res) => {
       ]
     }).sort({ createdAt: 1 });
 
-    // res.status(200).json({ messages, userId: otherUser._id });
     res.status(200).json({
       messages,
       userId: otherUser._id,
@@ -145,7 +144,6 @@ const getChatUsersWithUnseen = async (req, res) => {
       })
     );
 
-    // 🔽 Sort users by most recent message time
     usersWithUnseen.sort(
       (a, b) => new Date(b.lastMessageTime) - new Date(a.lastMessageTime)
     );
